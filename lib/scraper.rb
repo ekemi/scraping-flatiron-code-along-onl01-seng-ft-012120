@@ -7,7 +7,9 @@ require "pry"
 class Scraper
   
   def print_courses
+    
     self.make_courses
+   # binding.pry
     Course.all.each do |course|
       if course.title && course.title != ""
         puts "Title: #{course.title}"
@@ -31,8 +33,8 @@ class Scraper
   end  
   
   def get_courses
-    self.get_page.css(".post")
-    
+    self.get_page.css(".post").text
+  binding.pry
   end
   def make_courses
     self.get_courses.each do |post|
